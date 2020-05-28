@@ -1,14 +1,14 @@
 const express = require("express")
 const app = express()
 
-// const cors = require("cors");
+const cors = require("cors");
 
 // const mongoose = require("mongoose");
 
 // require("dotenv").config();
 
-// app.use(cors());
-// app.use(express.json());
+app.use(cors());
+app.use(express.json());
 
 // mongoose.connect("mongodb+srv://Belendor:n1nt3nd0192@cluster0-5xlaf.gcp.mongodb.net/test?retryWrites=true&w=majority", {
 //     useNewUrlParser: true,
