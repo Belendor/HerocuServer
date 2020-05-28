@@ -10,7 +10,7 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://Belendor:n1nt3nd0192@cluster0-5xlaf.gcp.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
