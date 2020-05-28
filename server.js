@@ -1,8 +1,9 @@
 const express = require("express")
 const app = express()
 
+let User = require("./models/user.model");
+
 const exerciseRoute = require("./routes/exercises");
-const userRoute = require("./routes/users");
 
 const cors = require("cors");
 
@@ -38,7 +39,22 @@ app.get("/", (req,res)=>{
     res.send("app is runing")})
 
 app.use("/exercises", exerciseRoute);
-app.use("/users", userRoute);
+
+
+app.get("/users", (req, res) => {
+    User.find()
+      .then((users) => res.json(users))
+      .catch((err) => res.status(400).json("Error: " + err));
+  });
+  
+app.post("users/add", (req, res) => {
+    const username = req.body.username;
+    const newUser = new User({ username });
+
+    newUser
+    .then(() => res.json("User added!"))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 
 app.listen(PORT, () => {
     console.log("Server is running on: " + PORT);
