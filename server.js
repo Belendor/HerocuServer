@@ -47,7 +47,7 @@ app.get("/users", (req, res) => {
       .catch((err) => res.status(400).json("Error: " + err));
   });
   
-app.post("users/add", (req, res) => {
+app.post("/users/add", (req, res) => {
     const username = req.body.username;
     const newUser = new User({ username });
 
