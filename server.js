@@ -1,6 +1,9 @@
 const express = require("express")
 const app = express()
 
+const exerciseRoute = require("./routes/exercises");
+const userRoute = require("./routes/users");
+
 const cors = require("cors");
 
 const mongoose = require("mongoose");
@@ -28,6 +31,9 @@ const PORT = process.env.PORT || 5000;
 
 app.get("/", (req,res)=>{
     res.send("app is runing")})
+
+app.use("/exercises", exerciseRoute);
+app.use("/users", userRoute);
 
 app.listen(PORT, () => {
     console.log("Server is running on: " + PORT);
